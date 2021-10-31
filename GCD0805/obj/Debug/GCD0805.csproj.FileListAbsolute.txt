@@ -231,3 +231,4 @@ C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OOXML
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OOXML.xml
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OpenXml4Net.pdb
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OpenXmlFormats.pdb
+C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.Migrations.ModifyTodoModel.resources
