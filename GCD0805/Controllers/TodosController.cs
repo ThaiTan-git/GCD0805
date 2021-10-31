@@ -48,5 +48,18 @@ namespace GCD0805.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Todos");
         }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            if (todoInDb == null)
+            {
+                return HttpNotFound();
+            };
+
+            _context.Todos.Remove(todoInDb);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Todos");
+        }
     }
 }
