@@ -214,3 +214,5 @@ C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.csproj.CopyComplete
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.dll
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.pdb
+C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.Migrations.CreateTodosTable.resources
+C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.csproj.GenerateResource.cache
