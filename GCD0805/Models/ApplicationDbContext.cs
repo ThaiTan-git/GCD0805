@@ -11,6 +11,7 @@ namespace GCD0805.Models
         }
 
         public DbSet<Todo> Todos { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public static ApplicationDbContext Create()
         {

@@ -7,13 +7,13 @@ namespace GCD0805.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ModifyTodoModel : IMigrationMetadata
+    public sealed partial class CreateTodosTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifyTodoModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateTodosTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110310920128_ModifyTodoModel"; }
+            get { return "202110311056169_CreateTodosTable"; }
         }
         
         string IMigrationMetadata.Source

@@ -186,16 +186,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Migrations\202110310533154_CreateTodosTable.cs" />
-    <Compile Include="Migrations\202110310533154_CreateTodosTable.Designer.cs">
-      <DependentUpon>202110310533154_CreateTodosTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110310920128_ModifyTodoModel.cs" />
-    <Compile Include="Migrations\202110310920128_ModifyTodoModel.Designer.cs">
-      <DependentUpon>202110310920128_ModifyTodoModel.cs</DependentUpon>
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Migrations\202110311056169_CreateTodosTable.cs" />
+    <Compile Include="Migrations\202110311056169_CreateTodosTable.Designer.cs">
+      <DependentUpon>202110311056169_CreateTodosTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -272,6 +270,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -287,11 +286,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110310533154_CreateTodosTable.resx">
-      <DependentUpon>202110310533154_CreateTodosTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110310920128_ModifyTodoModel.resx">
-      <DependentUpon>202110310920128_ModifyTodoModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110311056169_CreateTodosTable.resx">
+      <DependentUpon>202110311056169_CreateTodosTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
