@@ -38,6 +38,10 @@ namespace GCD0805.Controllers
         [HttpPost]
         public ActionResult Create(Todo todo)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             var newTodo = new Todo()
             {
                 Description = todo.Description,
@@ -84,6 +88,10 @@ namespace GCD0805.Controllers
         [HttpPost]
         public ActionResult Edit(Todo todo)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(todo);
+            }
             var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == todo.Id);
             if (todoInDb == null)
             {
