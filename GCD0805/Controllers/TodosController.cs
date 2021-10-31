@@ -71,5 +71,29 @@ namespace GCD0805.Controllers
             };
             return View(todoInDb);
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            if (todoInDb == null)
+            {
+                return HttpNotFound();
+            };
+            return View(todoInDb);
+        }
+        [HttpPost]
+        public ActionResult Edit(Todo todo)
+        {
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == todo.Id);
+            if (todoInDb == null)
+            {
+                return HttpNotFound();
+            }
+            todoInDb.Description = todo.Description;
+            todoInDb.DueDate = todo.DueDate;
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Todos");
+        }
     }
 }
