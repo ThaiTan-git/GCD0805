@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace GCD0805.Controllers
 {
+    [Authorize]
     public class TodosController : Controller
     {
         private ApplicationDbContext _context;
