@@ -1,4 +1,5 @@
 ﻿using GCD0805.Models;
+using GCD0805.Units;
 using GCD0805.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace GCD0805.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = Role.User)]
     public class TodosController : Controller
     {
         private ApplicationDbContext _context;
