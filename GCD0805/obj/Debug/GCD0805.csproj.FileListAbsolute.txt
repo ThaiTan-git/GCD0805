@@ -231,3 +231,4 @@ C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OpenX
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\bin\NPOI.OpenXmlFormats.pdb
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.Migrations.CreateTodosTable.resources
 C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.csproj.GenerateResource.cache
+C:\Users\Administrator 2\Source\Repos\ThaiTan-git\GCD0805\GCD0805\obj\Debug\GCD0805.Migrations.AddUserIdFKToTodosTable.resources

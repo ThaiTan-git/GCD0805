@@ -1,5 +1,6 @@
 ﻿using GCD0805.Models;
 using GCD0805.ViewModels;
+using Microsoft.AspNet.Identity;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -29,8 +30,10 @@ namespace GCD0805.Controllers
                 new Todo(){ Id = 2, Description = "On air 2", DueDate = new DateTime(2021, 10, 31) },
                 new Todo(){ Id = 3, Description = "On air 3", DueDate = new DateTime(2021, 11, 1)}
         };*/
+            var userId = User.Identity.GetUserId();
             var todos = _context.Todos
                 .Include(t => t.Category)
+                .Where(t => t.UserId == userId)
                 .ToList();
             return View(todos);
         }
@@ -56,11 +59,13 @@ namespace GCD0805.Controllers
                 };
                 return View(viewModel);
             }
+            var userId = User.Identity.GetUserId();
             var newTodo = new Todo()
             {
                 Description = model.Todo.Description,
                 DueDate = model.Todo.DueDate,
-                CategoryId = model.Todo.CategoryId
+                CategoryId = model.Todo.CategoryId,
+                UserId = userId
             };
 
             _context.Todos.Add(newTodo);
@@ -70,9 +75,10 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            var userId = User.Identity.GetUserId();
             var todoInDb = _context.Todos
                 .Include(t => t.Category)
-                .SingleOrDefault(t => t.Id == id);
+                .SingleOrDefault(t => t.Id == id && t.UserId == userId);
             if (todoInDb == null)
             {
                 return HttpNotFound();
@@ -85,9 +91,10 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Detail(int id)
         {
+            var userId = User.Identity.GetUserId();
             var todoInDb = _context.Todos
                 .Include(t => t.Category)
-                .SingleOrDefault(t => t.Id == id);
+                .SingleOrDefault(t => t.Id == id && t.UserId == userId);
             if (todoInDb == null)
             {
                 return HttpNotFound();
@@ -97,7 +104,8 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            var userId = User.Identity.GetUserId();
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id && t.UserId == userId);
             if (todoInDb == null)
             {
                 return HttpNotFound();
@@ -112,6 +120,7 @@ namespace GCD0805.Controllers
         [HttpPost]
         public ActionResult Edit(TodoCategoriesViewModel model)
         {
+            var userId = User.Identity.GetUserId();
             if (!ModelState.IsValid)
             {
                 var viewModel = new TodoCategoriesViewModel
@@ -121,7 +130,7 @@ namespace GCD0805.Controllers
                 };
                 return View(viewModel);
             }
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == model.Todo.Id);
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == model.Todo.Id && t.UserId == userId);
             if (todoInDb == null)
             {
                 return HttpNotFound();

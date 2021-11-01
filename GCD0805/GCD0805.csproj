@@ -191,6 +191,10 @@
     <Compile Include="Migrations\202110311056169_CreateTodosTable.Designer.cs">
       <DependentUpon>202110311056169_CreateTodosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111011914138_AddUserIdFKToTodosTable.cs" />
+    <Compile Include="Migrations\202111011914138_AddUserIdFKToTodosTable.Designer.cs">
+      <DependentUpon>202111011914138_AddUserIdFKToTodosTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202110311056169_CreateTodosTable.resx">
       <DependentUpon>202110311056169_CreateTodosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111011914138_AddUserIdFKToTodosTable.resx">
+      <DependentUpon>202111011914138_AddUserIdFKToTodosTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
