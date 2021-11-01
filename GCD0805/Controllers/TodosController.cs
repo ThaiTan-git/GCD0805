@@ -1,4 +1,5 @@
 ﻿using GCD0805.Models;
+using GCD0805.ViewModels;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -36,19 +37,30 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var categories = _context.Categories.ToList();
+            var viewModel = new TodoCategoriesViewModel()
+            {
+                Categories = categories
+            };
+            return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Todo todo)
+        public ActionResult Create(TodoCategoriesViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                var viewModel = new TodoCategoriesViewModel
+                {
+                    Todo = model.Todo,
+                    Categories = _context.Categories.ToList()
+                };
+                return View(viewModel);
             }
             var newTodo = new Todo()
             {
-                Description = todo.Description,
-                DueDate = todo.DueDate
+                Description = model.Todo.Description,
+                DueDate = model.Todo.DueDate,
+                CategoryId = model.Todo.CategoryId
             };
 
             _context.Todos.Add(newTodo);
@@ -58,7 +70,9 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            var todoInDb = _context.Todos
+                .Include(t => t.Category)
+                .SingleOrDefault(t => t.Id == id);
             if (todoInDb == null)
             {
                 return HttpNotFound();
@@ -71,7 +85,9 @@ namespace GCD0805.Controllers
         [HttpGet]
         public ActionResult Detail(int id)
         {
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            var todoInDb = _context.Todos
+                .Include(t => t.Category)
+                .SingleOrDefault(t => t.Id == id);
             if (todoInDb == null)
             {
                 return HttpNotFound();
@@ -86,22 +102,33 @@ namespace GCD0805.Controllers
             {
                 return HttpNotFound();
             };
-            return View(todoInDb);
+            var viewModel = new TodoCategoriesViewModel
+            {
+                Todo = todoInDb,
+                Categories = _context.Categories.ToList()
+            };
+            return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Edit(Todo todo)
+        public ActionResult Edit(TodoCategoriesViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(todo);
+                var viewModel = new TodoCategoriesViewModel
+                {
+                    Todo = model.Todo,
+                    Categories = _context.Categories.ToList()
+                };
+                return View(viewModel);
             }
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == todo.Id);
+            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == model.Todo.Id);
             if (todoInDb == null)
             {
                 return HttpNotFound();
             }
-            todoInDb.Description = todo.Description;
-            todoInDb.DueDate = todo.DueDate;
+            todoInDb.Description = model.Todo.Description;
+            todoInDb.DueDate = model.Todo.DueDate;
+            todoInDb.CategoryId = model.Todo.CategoryId;
 
             _context.SaveChanges();
             return RedirectToAction("Index", "Todos");
