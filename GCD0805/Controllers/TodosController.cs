@@ -18,7 +18,7 @@ namespace GCD0805.Controllers
         }
         // GET: Todos
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             /*Todo todo = new Todo()
             {
@@ -32,11 +32,19 @@ namespace GCD0805.Controllers
                 new Todo(){ Id = 2, Description = "On air 2", DueDate = new DateTime(2021, 10, 31) },
                 new Todo(){ Id = 3, Description = "On air 3", DueDate = new DateTime(2021, 11, 1)}
         };*/
+
             var userId = User.Identity.GetUserId();
             var todos = _context.Todos
                 .Include(t => t.Category)
                 .Where(t => t.UserId == userId)
                 .ToList();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                todos = todos.Where(t => t.Description.ToLower()
+                .Contains(searchString.ToLower()) || t.Category.Description.ToLower()
+                .Contains(searchString.ToLower()))
+                .ToList();
+            }
             return View(todos);
         }
         [HttpGet]
