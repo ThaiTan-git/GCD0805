@@ -8,6 +8,8 @@
     @*<a href="#" class="btn btn-primary">New Todo</a>*@
 
     @Html.ActionLink("New Todo", "Create", "Todos", htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("See Stats", "Stats", "Todos", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("My Teams", "Belong", "Todos", null, new { @class = "btn btn-default" })
 </div> 
 
 <form>

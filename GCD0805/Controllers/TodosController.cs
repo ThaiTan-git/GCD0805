@@ -144,5 +144,18 @@ namespace GCD0805.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Todos");
         }
+        [HttpGet]
+        public ActionResult Stats()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var stats = _context.Todos
+                .Where(t => t.UserId == userId)
+                .GroupBy(t => t.Category, (key, value) => new Stats { Category = key, Count = value.Count() })
+                .ToList();
+
+            return View(stats);
+        }
+
     }
 }
