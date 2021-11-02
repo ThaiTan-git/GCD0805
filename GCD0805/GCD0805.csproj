@@ -291,6 +291,7 @@
     <Content Include="Views\ToDos\Detail.cshtml" />
     <Content Include="Views\ToDos\Edit.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
+    <Content Include="Views\Teams\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
